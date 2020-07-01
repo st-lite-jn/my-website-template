@@ -1,0 +1,58 @@
+.c-table {
+	width: 100%;
+	overflow-x: auto;
+	background: linear-gradient(to left, rgba(204, 204, 204, 0), rgba(0, 0, 0, 0.2)) 0 0/60px 100%, linear-gradient(to right, rgba(204, 204, 204, 0), rgba(0, 0, 0, 0.2)) right/60px 100%;
+	background-repeat: no-repeat;
+	background-attachment: scroll;
+	@include gatterBlock;
+	@include mqMin($tabletSmall) {
+		overflow: visible;
+		background: none;
+	}
+	table {
+		width: 270%;
+		table-layout: fixed;
+		border-collapse: separate;
+		border-right: 1px solid $alto;
+		border-bottom: 1px solid $alto;
+		font-size: spvw(18);
+		background: linear-gradient(to left, hsla(0,0%,100%,0), white 45px) 0 0 / 150px 100%, linear-gradient(to right, hsla(0,0%,100%,0), white 45px) right / 150px 100%;
+		background-repeat: no-repeat;
+		background-attachment: local;
+		@include mqMin($tabletSmall) {
+			width: 100%;
+			font-size: 18px;
+			background: none;
+		}
+	}
+	thead {
+		th {
+			background-color: rgba(darken($concrete, 16.5%), 0.2);
+			@include mqMin($tabletSmall) {
+				background-color: $concrete;
+			}
+		}
+	}
+	th,
+	td {
+		border-left: 1px solid $alto;
+		border-top: 1px solid $alto;
+		padding: spvw(12) spvw(20);
+		@include mqMin($tabletSmall) {
+			padding: 12px 20px;
+		}
+	}
+	th {
+		background-color: rgba(darken($wildSand, 13%), 0.2);
+		font-weight: bold;
+		@include mqMin($tabletSmall) {
+			background-color: $wildSand;
+		}
+	}
+	td {
+		background-color: rgba($white, 0.1);
+		@include mqMin($tabletSmall) {
+			background-color: $white;
+		}
+	}
+}

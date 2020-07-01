@@ -1,0 +1,29 @@
+.p-share {
+	@include gatterBlock;
+	display: flex;
+	justify-content: flex-start;
+	@include mqMin($tabletSmall) {
+		justify-content: flex-end;
+	}
+	&__link {
+		display: block;
+		width: spvw(32);
+		@include mqMax($smart) {
+			margin-right: spvw(24);
+			&:last-child {
+				margin-right: 0;
+			}
+		}
+		@include mqMin($tabletSmall) {
+			width: 32px;
+			margin-left: 8px;
+			&:first-child{
+				margin-left: 0;
+			}
+		}
+		img {
+			width: 100%;
+			height: auto;
+		}
+	}
+}

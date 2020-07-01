@@ -1,0 +1,43 @@
+.c-heading-01 {
+	@include gatterBlock;
+	padding-top: spvw(32);
+	@include mqMin($tabletSmall) {
+		padding-top: 40px;
+	}
+	&__sub {
+		line-height: 1.33;
+		font-size: spvw(20);
+		font-weight: normal;
+		@include mqMin($tabletSmall) {
+			font-size: 24px;
+		}
+		&.under {
+			margin-bottom: spvw(8);
+			@include mqMin($tabletSmall) {
+				margin-bottom: 16px;
+			}
+		}
+	}
+	&__title {
+		margin-bottom: spvw(8);
+		line-height: 1.22;
+		font-size: spvw(36);
+		font-weight: bold;
+		@include mqMin($tabletSmall) {
+			margin-bottom: 16px;
+			line-height: 1.17;
+			font-size: 48px;
+		}
+	}
+	&__lead {
+		line-height: 1.44;
+		font-size: spvw(18);
+		@include mqMin($tabletSmall) {
+			line-height: 1.4;
+			font-size: 20px;
+		}
+	}
+	& > :last-child {
+		margin-bottom: 0;
+	}
+}

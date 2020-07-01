@@ -1,0 +1,109 @@
+.p-flag {
+	$this: #{&};
+	display: flex;
+	flex-direction: column;
+	@include gatterBlock;
+	@include mqMin($tabletSmall) {
+		display: block;
+		overflow: hidden;
+	}
+	&__body {
+		margin-bottom: 0;
+		& .c-text {
+			@include gatter;
+		}
+		& > :last-child {
+			margin-bottom: 0;
+		}
+	}
+	&__figure {
+	}
+	&__figure--left {
+		margin-bottom: spvw(16);
+		@include mqMin($tabletSmall) {
+			max-width: 50%;
+			float: left;
+			margin: 0 32px 16px 0;
+		}
+	}
+	&__figure--right {
+		margin-top: spvw(16);
+		order: 10;
+		@include mqMin($tabletSmall) {
+			max-width: 50%;
+			float: right;
+			margin: 0 0 16px 32px;
+		}
+	}
+	&__figure--col-8 {
+		@include mqMin($tabletSmall) {
+			max-width: calc(33.33333% - 16px);
+		}
+	}
+	&__figure--col-6 {
+		@include mqMax($smart) {
+			max-width: calc(50% - #{spvw(8)});
+			margin-left: auto;
+			margin-right: auto;
+		}
+		@include mqMin($tabletSmall) {
+			max-width: calc(25% - 16px);
+		}
+	}
+	&__figure-image {
+		width: 100%;
+	}
+	&__title {
+		margin-bottom: spvw(4);
+		@include mqMin($tabletSmall) {
+			margin-bottom: 8px;
+		}
+	}
+	&__caption {
+		margin-top: spvw(4);
+		line-height: 1.33;
+		font-size: spvw(12);
+		@include mqMin($tabletSmall) {
+			margin-top: 8px;
+			line-height: 1.29;
+			font-size: 14px;
+		}
+	}
+	//回り込みなし
+	&--around {
+		@extend #{$this};
+	}
+	&--around &__body {
+		@include mqMin($tabletSmall) {
+			overflow: hidden;
+		}
+	}
+	&--around &__figure--left,
+	&--around &__figure--right {
+		@include mqMin($tabletSmall) {
+			margin-bottom: 0;
+		}
+	}
+	//リンクブロック2カラム
+	&--block {
+		@extend #{$this};
+		display: block;
+	}
+	&--block &__figure--left {
+		margin: 0 0 spvw(16);
+		@include mqMin($tabletSmall) {
+			float: left;
+			margin: 0 32px 0 0;
+		}
+	}
+	&--block &__figure--right {
+		margin: 0 0 spvw(16);
+		@include mqMin($tabletSmall) {
+			float: right;
+			margin: 0 0 0 32px;
+		}
+	}
+	&--block &__body {
+		overflow: hidden;
+	}
+}

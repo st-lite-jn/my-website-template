@@ -1,0 +1,190 @@
+.p-list {
+	$this: #{&};
+	@include gatterBlock;
+	&__item {
+		position: relative;
+		margin-bottom: #{spvw(16)};
+		@include mqMin($tabletSmall) {
+			margin-bottom: 16px;
+		}
+		> * {
+			display: inline;
+		}
+	}
+	& & {
+		#{$this}__item {
+			margin-bottom: 0;
+			margin-top: spvw(16);
+			@include mqMin($tabletSmall) {
+				margin-top: 16px;
+			}
+		}
+	}
+	//丸型リストマーク
+	&--circle {
+		@extend #{$this};
+	}
+	&--circle &__item {
+		@include iconText(16,18,12,12);
+		&.dir-rtl {
+			padding-left: 0;
+			padding-right: spvw(16);
+			@include mqMin($tabletSmall) {
+				padding-left: 0;
+				padding-right: 18px;
+			}
+			&::before {
+				margin-right: 0;
+				margin-left: 16px;
+				@include mqMin($tabletSmall) {
+					margin-right: 0;
+					margin-left: 18px;
+				}
+			}
+		}
+		&::before {
+			background-color: $doveGray;
+			border-radius: 50%;
+		}
+	}
+	//ページ内リンクリストマーク
+	&--scroll {
+		@extend #{$this};
+	}
+	&--scroll &__item {
+		@include iconText(26,26,11,11,baseline);
+		&::before {
+			background: url(/assets/img/ico_scroll.svg) no-repeat 0 0;
+			background-size: contain;
+		}
+	}
+	//任意リストマーク
+	&--notes,
+	&--counter,
+	&--counter-notes {
+		@extend #{$this};
+		counter-reset: number alpha;
+	}
+	&--notes,
+	&--counter-notes {
+		line-height: 1.33;
+		font-size: spvw(12);
+		@include mqMin($tabletSmall) {
+			line-height: 1.29;
+			font-size: 14px;
+		}
+	}
+	&--notes &__item,
+	&--counter &__item,
+	&--counter-notes &__item {
+		counter-increment: number;
+		padding-left: spvw(30);
+		&.dir-rtl {
+			padding-left: 0;
+			padding-right: spvw(30);
+		}
+		@include mqMin($tabletSmall) {
+			padding-left: 30px;
+			&.dir-rtl {
+				padding-left: 0;
+				padding-right: 30px;
+			}
+		}
+		&::before {
+			content: counter(number, decimal)'.';
+			position: absolute;
+			top: 0;
+			margin-left: -#{spvw(30)};
+			@include mqMin($tabletSmall) {
+				margin-left: -30px;
+			}
+		}
+	}
+	&--notes &__item {
+		padding-left: spvw(10);
+		@include mqMin($tabletSmall) {
+			padding-left: 10px;
+		}
+		&::before {
+			content: '*';
+			margin-left: -#{spvw(10)};
+			@include mqMin($tabletSmall) {
+				margin-left: -10px;
+			}
+		}
+	}
+	&--counter-notes &__item {
+		&::before {
+			content: '*'counter(number, decimal)'.';
+		}
+	}
+	&--counter &--counter &__item,
+	&--counter-notes &--counter-notes &__item {
+		counter-increment: alpha;
+		padding-left: spvw(25);
+		@include mqMin($tabletSmall) {
+			padding-left: 25px;
+		}
+		&::before {
+			content: counter(alpha, lower-alpha)'.';
+		}
+	}
+	&--counter-notes &--counter-notes &__item {
+		padding-left: spvw(25);
+		@include mqMin($tabletSmall) {
+			padding-left: 25px;
+		}
+		&::before {
+			content: '*'counter(alpha, lower-alpha)'.';
+		}
+	}
+	//成り行き横並び
+	&--inline {
+		@include flexWrapFs;
+		margin-top: -#{spvw(16)};
+		margin-left: -#{spvw(32)};
+		@include mqMin($tabletSmall) {
+			margin-top: -16px;
+			margin-left: -42px;
+		}
+	}
+	&--inline &__item {
+		margin-left: spvw(32);
+		@include mqMin($tabletSmall) {
+			margin-left: 42px;
+		}
+	}
+	//カラム
+	&.row {
+		margin-top: -#{spvw(16)};
+		@include mqMin($tabletSmall) {
+			margin-top: -16px;
+		}
+		#{$this}__item {
+			margin-top: spvw(16);
+			margin-bottom: 0;
+			@include mqMin($tabletSmall) {
+				margin-top: 16px;
+			}
+
+		}
+	}
+	&--circle &__item[class*="col"] {
+		padding-left: #{spvw(16 + $gatter / 2)};
+		@include mqMin($tabletSmall) {
+			padding-left: #{18 + $gatterWide / 2}px;
+		}
+	}
+	&--scroll &__item[class*="col"] {
+		padding-left: #{spvw(24 + $gatter / 2)};
+		@include mqMin($tabletSmall) {
+			padding-left: #{24 + $gatterWide / 2}px;
+		}
+	}
+	&--counter &__item[class*="col"] {
+		padding-left: #{spvw(30 + $gatter / 2)};
+		@include mqMin($tabletSmall) {
+			padding-left: #{30 + $gatterWide / 2}px;
+		}
+	}
+}

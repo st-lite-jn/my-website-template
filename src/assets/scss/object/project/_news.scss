@@ -1,0 +1,25 @@
+.p-news {
+	@include gatterBlock;
+	&__item {
+		border-top: 1px solid $silver;
+		padding: spvw(16) 0;
+		@include mqMin($tabletSmall) {
+			display: flex;
+			padding: 24px 0;
+		}
+	}
+	&__title {
+		flex-shrink: 0;
+		@include mqMin($tabletSmall) {
+			width: 188px;
+			margin-right: 32px;
+		}
+	}
+	&__body {
+		flex: 1;
+		margin-top: spvw(8);
+		@include mqMin($tabletSmall) {
+			margin-top: 0;
+		}
+	}
+}

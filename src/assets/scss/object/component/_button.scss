@@ -1,0 +1,57 @@
+.c-button {
+	$this: #{&};
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	vertical-align: top;
+	width: 100%;
+	padding: spvw(16);
+	margin-top: spvw(32);
+	border: 1px solid $azure;
+	border-radius: spvw(8);
+	background-color: $white;
+	line-height: 1.56;
+	font-size: spvw(18);
+	font-weight: bold;
+	color: $azure;
+	@include mqMin($tabletSmall) {
+		width: auto;
+		min-width: 160px;
+		border-radius: 8px;
+		margin-top: 40px;
+		padding: 16px;
+		line-height: 1.5;
+		font-size: 20px;
+		transition: opacity $transitionFast $easing;
+	}
+	&:hover {
+		@include mqMin($tabletSmall) {
+			text-decoration: none;
+			opacity: $opacity;
+		}
+	}
+	&:disabled {
+		opacity: $opacity;
+	}
+	&--strong {
+		@extend #{$this};
+		background-color: $azure;
+		color: $white;
+	}
+	&-wrap {
+		@include gatterBlock;
+		margin-top: - spvw(32);
+		@include mqMin($tabletSmall) {
+			display: flex;
+			justify-content: center;
+			flex-wrap: wrap;
+			margin-top: -40px;
+		}
+		#{$this} {
+			@include mqMin($tabletSmall) {
+				margin-left: 16px;
+				margin-right: 16px;
+			}
+		}
+	}
+}

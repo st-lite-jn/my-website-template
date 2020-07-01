@@ -1,0 +1,1136 @@
+.header {
+	$this: #{&};
+	position: relative;
+	z-index: 100;
+	&::after {
+		@include mqMax($tabletWide) {
+			content: '';
+			position: absolute;
+			left: 0;
+			top: 0;
+			display: block;
+			width: 100%;
+			height: 100%;
+			background-color: $concrete;
+			opacity: 0;
+			transform: translateX(100%);
+			transition: opacity $transition $easing, transform $transition $easing;
+		}
+	}
+	&__head {
+		@include containerSmart;
+		padding-top: spvw(7);
+		padding-bottom: spvw(7);
+		background-color: $concrete;
+		@include mqMin($tabletSmall) {
+			position: relative;
+			@include baseContainer;
+			padding-top: 7px;
+			padding-bottom: 7px;
+		}
+		@include mqMin($wide) {
+			position: static;
+			padding: 0;
+			background: none;
+		}
+	}
+	&__name {
+		line-height: 1.3;
+		font-size: spvw(14);
+		color: $doveGray;
+		@include mqMax($smart) {
+			margin-right: spvw(97);
+			&.dir-rtl {
+				margin-right: 0;
+				margin-left: spvw(97);
+			}
+		}
+		@include mqMin($tabletSmall) {
+			font-size: 14px;
+		}
+		@include mqMin($wide) {
+			position: absolute;
+			top: 19px;
+			margin-left: $paddingWide + 120px + 16px;
+			&.dir-rtl {
+				margin-left: 0;
+				margin-right: $paddingWide + 120px + 16px;
+			}
+			&--local {
+				margin-left: $paddingWide + 240px + 12px + 16px !important;
+				&.dir-rtl {
+					margin-left: 0 !important;
+					margin-right: $paddingWide + 240px + 12px + 16px !important;
+				}
+			}
+			
+		}
+		@include mqMin($sxga) {
+			margin-left: $paddingWide + 120px + 40px;
+			&.dir-rtl {
+				margin-left: 0;
+				margin-right: $paddingWide + 120px + 40px;
+			}
+		}
+	}
+	&__search {
+		position: absolute;
+		display: none;
+		top: 100%;
+		left: 0;
+		width: 100%;
+		background-color: $concrete;
+		box-shadow: 0 spvw(3) spvw(6) rgba(0, 0, 0, 0.16);
+		overflow: hidden;
+		@include mqMin($tabletSmall) {
+			box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+		}
+		@include mqMin($wide) {
+			top: auto;
+			left: auto;
+			position: relative;
+		}
+	}
+	&__search-in {
+		position: relative;
+		padding: spvw(20);
+		@include mqMin($tabletSmall) {
+			padding: 20px $paddingWide;
+		}
+		@include mqMin($wide) {
+			display: block;
+			max-width: $sxga;
+			margin: 0 auto;
+			padding: 22px $paddingWide;
+		}
+	}
+	&__search-block {
+		display: flex;
+		@include mqMin($wide) {
+			max-width: 640px;
+			margin: 0 auto;
+			flex: 1;
+		}
+	}
+	&__search-input {
+		flex: 1;
+		width: 100%;
+		height: spvw(36);
+		padding: spvw(4) spvw(15);
+		border: 1px solid $mercury;
+		border-right: none;
+		background: $white;
+		box-shadow: none;
+		font-size: spvw(18);
+		@include mqMin($tabletSmall) {
+			height: 36px;
+			padding: 4px 15px;
+			font-size: 18px;
+		}
+	}
+	&__search-button {
+		width: spvw(76);
+		height: spvw(36);
+		flex-shrink: 0;
+		background-color: $doveGray;
+		text-align: center;
+		font-size: spvw(18);
+		font-weight: normal;
+		color: $white;
+		@include mqMin($tabletSmall) {
+			width: 76px;
+			height: 36px;
+			font-size: 18px;
+		}
+		@include mqMin($wide) {
+			width: 96px;
+			transition: opacity $transitionFast $easing;
+		}
+		&:hover {
+			@include mqMin($wide) {
+				opacity: $opacity;
+			}
+		}
+	}
+	&__search-close {
+		display: none;
+		@include mqMin($wide) {
+			position:absolute;
+			display: block;
+			width: 25px;
+			height: 25px;
+			right: 40px;
+			top: 50%;
+			padding: 0;
+			margin-top: -12px;
+			background: none;
+			&.dir-rtl {
+				right: auto;
+				left: 40px;
+			}
+		}
+		&::before {
+			@include mqMin($wide) {
+				content: '';
+				position: absolute;
+				left: 0;
+				top: 0;
+				display: inline-block;
+				width: 100%;
+				height: 100%;
+				background-image: url(/assets/img/ico_close.svg);
+				background-position: center;
+				background-repeat: no-repeat;
+				background-size: contain;
+			}
+		}
+	}
+	&__in {
+		@include containerSmart;
+		@include flexNowrapSb;
+		align-items: center;
+		padding-top: spvw(10);
+		padding-bottom: spvw(10);
+		@include mqMin($tabletSmall) {
+			@include baseContainer;
+			padding-top: 10px;
+			padding-bottom: 10px;
+		}
+		@include mqMin($wide) {
+			align-items: stretch;
+			padding-top: 19px;
+			padding-bottom: 19px;
+		}
+	}
+	&__logo {
+		flex-shrink: 0;
+		font-size: 0;
+		//グローバルと個社のロゴを併記する場合の記述
+		&--local {
+			@include mqMax($smart) {
+				display: none;
+			}
+			@include mqMin($tabletSmall) {
+				margin-left: 16px;
+				&.dir-rtl {
+					margin-left: 0;
+					margin-right: 16px;
+				}
+			}
+		}
+	}
+	&__logo-image {
+		width: spvw(86);
+		@include mqMin($tabletSmall) {
+			width: 86px;
+		}
+		@include mqMin($wide) {
+			width: 120px;
+		}
+	}
+	&__contents {
+		margin-left: auto;
+		&.dir-rtl {
+			margin-left: 0;
+			margin-right: auto;
+		}
+		@include mqMin($tabletSmall) {
+			padding-left: 16px;
+			&.dir-rtl {
+				padding-left: 0;
+				padding-right: 16px;
+			}
+		}
+		@include mqMin($wide) {
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			align-items: flex-end;
+			flex: 1;
+			padding-left: 16px;
+			&.dir-rtl {
+				padding-left: 0;
+				padding-right: 16px;
+			}
+		}
+		@include mqMin($sxga) {
+			padding-left: 40px;
+			&.dir-rtl {
+				padding-left: 0;
+				padding-right: 40px;
+			}
+		}
+	}
+	&__utility-list {
+		display: flex;
+		align-items: center;
+		&.has-lang {
+			@include mqMin($wide) {
+				margin-top: -10px;
+			}
+		}
+	}
+	&__utility-item {
+		font-size: 0;
+	}
+	//言語選択 リスト形式
+	&__lang-ls {
+		box-sizing: border-box;
+		@include mqMax($smart) {
+			position: absolute;
+			margin-left: 0 !important;
+			right: spvw(16);
+			top:0;
+			&.dir-rtl {
+				right: auto;
+				left: spvw(16);
+			}
+		}
+		&__current ,&__link {
+			box-sizing: border-box;
+			position: relative;
+			display: block;
+			width: spvw(97);
+			background-color: $white;
+			border-style: solid;
+			border-color: $concrete;
+			line-height: 1.1;
+			text-align: left;
+			color: $doveGray;
+			font-size: spvw(14);
+			cursor: pointer;
+			&.dir-rtl {
+				text-align: right;
+			}
+			@include mqMin($tabletSmall) {
+				width: 80px;
+				font-size: 14px;
+				border-width: 0px 1px;
+				border-color: $alto;
+			}
+		}
+		&__current {
+			margin: 0;
+			padding:spvw(6) spvw(12);
+			border-width: spvw(2);
+			@include mqMin($tabletSmall) {
+				padding: 4px 12px;
+				border-width: 1px;
+			}
+			&::after{
+				content: "";
+				display: block;
+				position: absolute;
+				right: spvw(12);
+				top: 50%;
+				transform: translateY(-50%);
+				background-image: url(/assets/img/arrow_bottom.png);
+				background-repeat: no-repeat;
+				background-position: center center;
+				background-size: contain;
+				width: spvw(10.67);
+				height: spvw(5.33);
+				@include mqMin($tabletSmall) {
+					right: 8px;
+					width: 9px;
+					height: 4px;
+				}
+
+			}
+			&.dir-rtl {
+				&::after{
+					right: auto;
+					left: spvw(12);
+					@include mqMin($tabletSmall) {
+						right: auto;
+						left: 8px;
+					}
+				}
+
+			}
+			&.is-active {
+				border-bottom-color: $white;
+			}
+		}
+		&__link {
+			border-width: 0px spvw(2);
+			padding:spvw(6) spvw(12);
+			@include mqMin($tabletSmall) {
+				padding: 4px 12px;
+				border-width: 0px 1px;
+			}
+			&:last-child{
+				border-bottom-width: spvw(2);
+				@include mqMin($tabletSmall) {
+					border-bottom-width: 1px;
+				}
+			}
+		}
+		&__list {
+			position: absolute;
+			display: none;
+			box-sizing: border-box;
+			z-index: 100;
+		}
+	}
+	&__utility-item + &__utility-item {
+		margin-left: spvw(30);
+		&.dir-rtl {
+			margin-left: 0;
+			margin-right: spvw(30);
+		}
+		@include mqMin($tabletSmall) {
+			margin-left: 30px;
+			&.dir-rtl {
+				margin-left: 0;
+				margin-right: 30px;
+			}
+		}
+		@include mqMin($wide) {
+			margin-left: 16px;
+			&.dir-rtl {
+				margin-left: 0;
+				margin-right: 16px;
+			}
+		}
+		@include mqMin($sxga) {
+			margin-left: 24px;
+			&.dir-rtl {
+				margin-left: 0;
+				margin-right: 24px;
+			}
+		}
+	}
+	&__utility-item--trigger {
+		width: spvw(25);
+		height: spvw(25);
+		@include mqMin($tabletSmall) {
+			width: 25px;
+			height: 25px;
+		}
+		@include mqMin($wide) {
+			display: none;
+		}
+	}
+	&__utility-link {
+		position: relative;
+		display: inline-block;
+		width: spvw(25);
+		height: spvw(25);
+		padding: 0;
+		@include mqMin($tabletSmall) {
+			display: flex;
+			align-items: center;
+			width: 25px;
+			height: 25px;
+		}
+		@include mqMin($wide) {
+			width: auto;
+			height: auto;
+			transition: opacity $transitionFast $easing;
+		}
+		&:hover {
+			@include mqMin($wide) {
+				opacity: $opacity;
+				text-decoration: none;
+			}
+		}
+	}
+	&__utility-link--ex,
+	&__utility-link--world,
+	&__utility-link--search {
+		&::before,
+		&::after {
+			content: '';
+			position: absolute;
+			left: 0;
+			top: 0;
+			display: inline-block;
+			width: spvw(25);
+			height: spvw(25);
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: contain;
+			transition: opacity $transitionFast $easing;
+			@include mqMin($tabletSmall) {
+				width: 25px;
+				height: 25px;
+			}
+			@include mqMin($wide) {
+				position: static;
+				width: 16px;
+				height: 16px;
+				margin-right: 8px;
+			}
+		}
+		&::after {
+			@include mqMin($wide) {
+				display: none;
+			}
+		}
+		&.dir-rtl {
+			&::before,
+			&::after {
+				left: auto;
+				right:0;
+				@include mqMin($wide) {
+					margin-right: 0;
+					margin-left: 8px;
+				}
+			}
+		}
+	}
+	&__utility-link--ex {
+		&::before {
+			background-image: url(/assets/img/ico_ex-link.svg);
+		}
+	}
+	&__utility-link--world {
+		&::before {
+			background-image: url(/assets/img/ico_world.svg);
+		}
+	}
+	&__utility-link--search {
+		&::before {
+			background-image: url(/assets/img/ico_search.svg);
+		}
+		&::after {
+			background-image: url(/assets/img/ico_close.svg);
+			opacity: 0;
+		}
+	}
+	&__utility-image {
+		width: spvw(25);
+		flex-shrink: 0;
+		@include mqMin($tabletSmall) {
+			width: 25px;
+		}
+		@include mqMin($wide) {
+			width: 16px;
+			margin-right: 8px;
+		}
+	}
+	&__utility-link &__utility-image {
+		opacity: 1;
+	}
+	&__utility-text {
+		@include mqMax($tabletWide) {
+			@include none;
+		}
+		@include mqMin($wide) {
+			line-height: 1.3;
+			font-size: 14px;
+			color: $doveGray;
+		}
+	}
+	&__navi {
+		position: fixed;
+		z-index: 10;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		padding-top: spvw(112);
+		background-color: $concrete;
+		@media print{
+			display: none;
+		}
+		@include mqMax($tabletWide) {
+			opacity: 0;
+			transform: translateX(100%);
+			transition: opacity $transition $easing, transform $transition $easing;
+		}
+		@include mqMin($tabletSmall) {
+			padding-top: 112px;
+		}
+		@include mqMin($wide) {
+			position: static;
+			height: auto;
+			padding: 0;
+			line-height: 1.2;
+			overflow: visible;
+			background: none;
+		}
+	}
+	&__navi-in {
+		height: 100%;
+		padding-bottom: spvw($padding);
+		overflow-y: auto;
+		overflow-x: hidden;
+		-webkit-overflow-scrolling: touch;
+		@include mqMin($tabletSmall) {
+			padding-bottom: $paddingWide;
+			padding-left: $paddingWide;
+			padding-right: $paddingWide;
+		}
+		@include mqMin($wide) {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			height: auto;
+			padding: 0;
+			overflow: visible;
+		}
+	}
+	&__menu {
+		position: relative;
+		border-bottom: 1px solid $alto;
+		font-size: spvw(18);
+		@include mqMin($tabletSmall) {
+			margin-left: -$paddingWide;
+			margin-right: -$paddingWide;
+			font-size: 18px;
+		}
+		@include mqMin($wide) {
+			position: static;
+			display: flex;
+			margin: 0;
+			border-bottom: none;
+		}
+	}
+	&__menu-item,
+	&__submenu-item {
+		border-top: 1px solid $alto;
+		@include mqMin($wide) {
+			border-top: none;
+		}
+	}
+	&__menu-item + &__menu-item,
+	&__submenu-item + &__submenu-item {
+		@include mqMin($wide) {
+			margin-left: 16px;
+		}
+		@include mqMin($sxga) {
+			margin-left: 32px;
+		}
+	}
+	&__menu-item.dir-rtl + &__menu-item.dir-rtl {
+		@include mqMin($wide) {
+			margin-left: 0;
+			margin-right: 16px;
+		}
+		@include mqMin($sxga) {
+			margin-left: 0;
+			margin-right: 32px;
+		}
+	}
+	&__menu-link,
+	&__submenu-link {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: spvw(10) spvw($padding);
+		color: $mineShaft;
+		@include mqMin($tabletSmall) {
+			padding: 10px $paddingWide;
+		}
+		&[role="button"]::after {
+			content: '';
+			display: block;
+			width: spvw(9);
+			height: spvw(15);
+			margin-left: spvw(10);
+			flex-shrink: 0;
+			background: url(/assets/img/ico_next.svg) no-repeat center;
+			background-size: contain;
+
+			@include mqMin($tabletSmall) {
+				width: 9px;
+				height: 15px;
+				margin-left: 10px;
+			}
+		}
+		&.dir-rtl {
+			&[role="button"]::after {
+				transform: rotate(180deg);
+			}
+		}
+	}
+	&__menu-link {
+		@include mqMin($wide) {
+			position: relative;
+			display: block;
+			height: 38px;
+			padding: 0;
+			margin-bottom: calc(-1em - 1px);
+			transition: opacity $transitionFast $easing;
+		}
+		&:hover {
+			@include mqMin($wide) {
+				text-decoration: none;
+				opacity: $opacity;
+			}
+		}
+		&[role="button"]::after {
+			@include mqMin($wide) {
+				position: absolute;
+				left: 0;
+				bottom: 0;
+				width: 100%;
+				height: 4px;
+				margin-left: 0;
+				background: $doveGray;
+				opacity: 0;
+			}
+		}
+		&.is-current::after,
+		&.is-active::after {
+			@include mqMin($wide) {
+				opacity: 1;
+			}
+		}
+	}
+	&__submenu {
+		position: absolute;
+		z-index: 1;
+		left: 0;
+		top: 0;
+		width: 100%;
+		padding-bottom: spvw($padding);
+		overflow-y: auto;
+		overflow-x: hidden;
+		-webkit-overflow-scrolling: touch;
+		background-color: $concrete;
+		@include mqMax($tabletWide) {
+			min-height: calc(100vh - 112px);
+			transform: translateX(100%);
+			transition: transform $transition $easing;
+		}
+		@include mqMax($smart) {
+			min-height: calc(100vh - #{spvw(112)});
+		}
+		@include mqMin($tabletSmall) {
+			padding-bottom: $paddingWide;
+		}
+		@include mqMin($wide) {
+			visibility: hidden;
+			position: absolute;
+			top: 100%;
+			left: 0;
+			width: 100vw;
+			max-height: 0;
+			min-height: 0;
+			padding: 0 $paddingWide;
+			line-height: 1.33;
+			background-color: $concrete;
+			overflow: hidden;
+			transition: max-height $transition $easing, min-height $transition $easing, visibility $transition $easing;
+		}
+		@media screen and (min-width: #{$baseWidth + $paddingWide * 2}) {
+			padding-left: calc((100% - #{$baseWidth}) / 2);
+			padding-right: calc((100% - #{$baseWidth}) / 2);
+		}
+		& & {
+			@include mqMin($wide) {
+				top: 44px;
+				left: 33.333%;
+				width: 33.333%;
+				max-height: none;
+				padding: 0;
+				overflow: visible;
+				z-index: 1;
+				transform: translateX(-10%);
+				opacity: 0;
+				transition: transform $transition $easing, opacity $transition $easing, max-height $transition $easing, min-height $transition $easing, visibility $transition $easing;
+				&.dir-rtl {
+					left: auto;
+					right:33.333%;
+				}
+			}
+		}
+		& & & {
+			@include mqMin($wide) {
+				top: 0;
+				left: 100%;
+				width: 100%;
+				&.dir-rtl {
+					left: auto;
+					right: 0;
+				}
+			}
+		}
+	}
+	&__submenu-in {
+		@include mqMin($wide) {
+			position: relative;
+			height: 100%;
+			padding: 44px 0;
+		}
+	}
+	&__submenu &__submenu &__submenu-title,
+	&__submenu &__submenu &__submenu-list {
+		@include mqMin($wide) {
+			width: 100%;
+		}
+	}
+	&__submenu-title {
+		display: block;
+		border-top: 1px solid $alto;
+		padding: spvw(5) spvw($padding);
+		font-size: spvw(24);
+		color: $mineShaft;
+		@include mqMin($tabletSmall) {
+			padding: 5px $paddingWide;
+			font-size: 24px;
+		}
+		@include mqMin($wide) {
+			width: 33.333%;
+			border-top: none;
+			padding: 10px 54px;
+		}
+		&:hover {
+			@include mqMin($wide) {
+				text-decoration: none;
+				background-color: $white;
+			}
+		}
+	}
+	&__submenu-list {
+		border-bottom: 1px solid $alto;
+		font-size: spvw(18);
+		@include mqMin($tabletSmall) {
+			font-size: 18px;
+		}
+		@include mqMin($wide) {
+			width: 33.333%;
+			border-bottom: none;
+		}
+	}
+	&__submenu-item + &__submenu-item {
+		@include mqMin($wide) {
+			margin-left: 0;
+		}
+	}
+	&__submenu-link {
+		@include mqMin($wide) {
+			position: relative;
+			height: auto;
+			margin: 0;
+			padding: 10px 54px;
+		}
+		&[role="button"]::after {
+			@include mqMin($wide) {
+				content: none;
+			}
+			@include mqMin($wide) {
+				content: '';
+			}
+		}
+		&:hover,
+		&.is-active {
+			@include mqMin($wide) {
+				text-decoration: none;
+				background-color: $white;
+				z-index: 2;
+			}
+		}
+	}
+	&__info {
+		@include containerSmart;
+		margin-top: spvw(47);
+		font-size: spvw(16);
+		@include mqMin($tabletSmall) {
+			margin-top: 47px;
+			padding: 0;
+			font-size: 16px;
+		}
+		@include mqMin($wide) {
+			display: flex;
+			margin-top: 0;
+			padding: 0;
+		}
+	}
+	&__info-item + &__info-item {
+		margin-top: spvw(24);
+		@include mqMin($tabletSmall) {
+			margin-top: 24px;
+		}
+		@include mqMin($wide) {
+			margin-top: 0;
+			margin-left: 16px;
+			&.dir-rtl {
+				margin-left: 0;
+				margin-right: 16px;
+			}
+		}
+		@include mqMin($sxga) {
+			margin-left: 24px;
+			&.dir-rtl {
+				margin-left: 0;
+				margin-right: 24px;
+			}
+		}
+	}
+	&__info-link {
+		color: $mineShaft;
+		@include mqMin($wide) {
+			position: relative;
+			display: block;
+		    height: 38px;
+		    padding: 2px 0 0;
+			margin-bottom: calc(-1em - 3px);
+			transition: opacity $transitionFast $easing;
+		}
+		&:hover {
+			@include mqMin($wide) {
+				text-decoration: none;
+				opacity: $opacity;
+			}
+		}
+	}
+	&__info-link[role="button"] {
+		&::after {
+			@include mqMin($wide) {
+				content: '';
+				display: block;
+				position: absolute;
+				left: 0;
+				bottom: 0;
+				width: 100%;
+				height: 4px;
+				margin-left: 0;
+				background: $doveGray;
+				opacity: 0;
+			}
+		}
+		&.is-current::after,
+		&.is-active::after {
+			@include mqMin($wide) {
+				opacity: 1;
+			}
+		}
+	}
+	&__info-link + &__submenu {
+		@include mqMax($tabletWide) {
+			top:112px;
+		}
+		@include mqMax($smart) {
+			top: spvw(112);
+		}
+	}
+	&__trigger,
+	&__navi-close,
+	&__submenu-close {
+		position: relative;
+		z-index: 11;
+		width: spvw(25);
+		height: spvw(25);
+		padding: 0;
+		background: none;
+		@include mqMin($tabletSmall) {
+			width: 25px;
+			height: 25px;
+		}
+		&::before,
+		&::after {
+			content: '';
+			position: absolute;
+			left: 0;
+			top: 0;
+			display: inline-block;
+			width: 100%;
+			height: 100%;
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: contain;
+			transition: opacity $transitionFast $easing;
+		}
+		&::before {
+			background-image: url(/assets/img/ico_menu.svg);
+		}
+		&::after {
+			background-image: url(/assets/img/ico_close.svg);
+			opacity: 0;
+
+		}
+	}
+	&__trigger {
+		z-index: 0;
+		&::after {
+			content: none;
+		}
+	}
+	&__navi-close,
+	&__submenu-close {
+		display: none;
+		@include mqMin($wide) {
+			display: inline-block;
+			position: absolute;
+			top: 16px;
+			right: 0;
+			&.dir-rtl {
+				right: auto;
+				left: 0;
+			}
+		}
+		&::before {
+			content: none;
+		}
+		&::after {
+			opacity: 1;
+		}
+	}
+	&__navi-close {
+		position: absolute;
+		right: spvw($padding);
+		top: spvw(60);
+		display: inline-block;
+		&.dir-rtl {
+			right: auto;
+			left: spvw($padding);
+		}
+		@include mqMin($tabletSmall) {
+			right: $paddingWide;
+			top: 54px;
+			&.dir-rtl {
+				right: auto;
+				left:  $paddingWide;
+			}
+		}
+		@include mqMin($wide) {
+			display: none;
+		}
+	}
+	&__back {
+		display: inline-flex;
+		position: absolute;
+		z-index: 11;
+		top: spvw(60);
+		left: spvw($padding);
+		align-items: center;
+		padding: 0;
+		background: none;
+		font-size: spvw(16);
+		color: $gray;
+		opacity: 0;
+		visibility: hidden;
+		transform: translateX(100%);
+		@include transitionDefalt;
+		@include mqMin($tabletSmall) {
+			top: 54px;
+			left: $paddingWide;
+			font-size: 16px;
+		}
+		&::before {
+			content: '';
+			display: inline-block;
+			flex-shrink: 0;
+			width: spvw(12);
+			height: spvw(22);
+			margin-right: spvw(16);
+			background: url(/assets/img/ico_prev.svg) no-repeat center;
+			background-size: contain;
+			@include mqMin($tabletSmall) {
+				width: 12px;
+				height: 22px;
+				margin-right: 16px;
+			}
+		}
+		&.dir-rtl {
+			left: auto;
+			right: spvw($padding);
+			@include mqMin($tabletSmall) {
+				left: auto;
+				right: $paddingWide;
+			}
+			&::before {
+				transform: rotate(180deg);
+				margin-right: 0;
+				margin-left: spvw(16);
+				@include mqMin($tabletSmall) {
+					margin-right: 0;
+					margin-left: 16px;
+				}
+			}
+		}
+		@include mqMin($wide) {
+			display: none;
+		}
+	}
+	//メニューアクティブ
+	&.is-active::after,
+	&.is-active &__navi {
+		@include mqMax($tabletWide) {
+			transform: translate(0);
+			opacity: 1;
+		}
+	}
+	//サブメニューアクティブ
+	.is-active + &__submenu {
+		@include mqMax($tabletWide) {
+			transform: translate(0);
+			opacity: 1;
+		}
+		@include mqMin($wide) {
+			visibility: visible;
+			transition: max-height $transition $easing, min-height $transition $easing;
+		}
+	}
+	&__menu-link.is-other + &__submenu,
+	&__info-link.is-other + &__submenu {
+		@include mqMin($wide) {
+			max-height: none;
+			transition: max-height $transition $easing, min-height $transition $easing;
+		}
+	}
+	.is-active + &__submenu &__submenu,
+	&__menu-link.is-other + &__submenu &__submenu,
+	&__info-link.is-other + &__submenu &__submenu {
+		@include mqMin($wide) {
+			transition: transform $transition $easing, opacity $transition $easing, max-height $transition $easing, min-height $transition $easing, visibility $transition $easing;
+		}
+	}
+	&__submenu-link.is-other + &__submenu {
+		@include mqMin($wide) {
+			transform: translateX(0);
+		}
+	}
+	&__submenu-link.is-active + &__submenu,
+	&__info-link.is-active + &__submenu {
+		@include mqMin($wide) {
+			transform: translateX(0);
+			opacity: 1;
+		}
+	}
+	//Backアクティブ
+	&__back.is-active {
+		transform: translate(0);
+		visibility: visible;
+		opacity: 1;
+	}
+	&__utility-link--search.is-active {
+		&::before {
+			@include mqMax($tabletWide) {
+				opacity: 0;
+			}
+		}
+		&::after {
+			@include mqMax($tabletWide) {
+				opacity: 1;
+			}
+		}
+	}
+	//リサイズ中のtranstion停止
+	@at-root body.is-stop-transition {
+		#{$this}__search,
+		#{$this}__navi,
+		#{$this}__utility-link::before,
+		#{$this}__utility-link::after,
+		#{$this}__submenu,
+		#{$this}__submenu #{$this}__submenu,
+		.is-active + #{$this}__submenu,
+		.is-other + #{$this}__submenu,
+		.is-active + #{$this}__submenu #{$this}__submenu,
+		.is-other + #{$this}__submenu #{$this}__submenu,
+		#{$this}__menu-link,
+		#{$this}__submenu-link,
+		#{$this}__trigger,
+		#{$this}__trigger::before,
+		#{$this}__trigger::after,
+		#{$this}__trigger-mark,
+		#{$this}__back,
+		#{$this}__back::before {
+			transition: none;
+		}
+	}
+}

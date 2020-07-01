@@ -1,0 +1,69 @@
+//アコーディオン
+.p-accordion {
+	@include gatterBlock;
+	&__item {
+		border-top: 1px solid $alto;
+		border-bottom: 1px solid $alto;
+	}
+	&__item + &__item {
+		border-top: none;
+	}
+	&__trigger {
+		position: relative;
+		display: block;
+		width: 100%;
+		padding: spvw(16) spvw(40) spvw(16) spvw(20);
+		line-height: 1.56;
+		text-align: left;
+		font-size: spvw(18);
+		font-weight: bold;
+		@include mqMin($tabletSmall) {
+			padding: 15px 40px 15px 20px;
+			line-height: 1.5;
+			font-size: 20px;
+		}
+	}
+	&__trigger::before,
+	&__trigger::after {
+		content: '';
+		flex-shrink: 0;
+		position: absolute;
+		right: spvw(20);
+		top: 0;
+		bottom: 0;
+		margin: auto;
+		display: inline-block;
+		width: spvw(14);
+		height: spvw(14);
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: contain;
+		transition: opacity $transitionFast $easing;
+		@include mqMin($tabletSmall) {
+			right: 20px;
+			width: 14px;
+			height: 14px;
+		}
+	}
+	&__trigger::before {
+		background-image: url(/assets/img/ico_vertical.svg);
+	}
+	&__trigger::after {
+		background-image: url(/assets/img/ico_column.svg);
+	}
+	&__trigger.is-active::before {
+		opacity: 0;
+	}
+	&__body {
+		@include hidden;
+	}
+	&__body-in {
+		padding: spvw(3) spvw(20) spvw(16);
+		@include mqMin($tabletSmall) {
+			padding: 12px 20px 32px;
+		}
+		>:last-child {
+			margin-bottom: 0;
+		}
+	}
+}

@@ -1,0 +1,37 @@
+.c-tag-lists {
+	@include flexWrapFs;
+	&__tag {
+		$cTag: &;
+		padding: spvw(8) spvw(16);
+		margin-right: spvw(12);
+		margin-bottom: spvw(16);
+		border-radius: spvw(32);
+		color: $mineShaft;
+		font-weight: normal;
+		font-size: spvw(14);
+		@include mqMin($tabletSmall) {
+			padding: 8px 16px;
+			margin-right: 12px;
+			margin-bottom: 16px;
+			border-radius: 32px;
+			font-size: 16px;
+		}
+		@include mqMin($tabletWide) {
+			transition: opacity $transitionFast $easing;
+		}
+		&:hover {
+			text-decoration: none;
+			@include mqMin($tabletWide) {
+				opacity: $opacity;
+			}
+		}
+		&--concrete {
+			@extend #{$cTag};
+			background-color: $concrete;
+		}
+		&--yellow {
+			@extend #{$cTag};
+			background-color: #F6ECE5;
+		}
+	}
+}

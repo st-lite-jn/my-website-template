@@ -1,0 +1,56 @@
+.c-table-list {
+	@include gatterBlock;
+	& + & {
+		margin-top: -#{spvw(32)};
+		@include mqMin($tabletSmall) {
+			margin-top: -28px;
+		}
+	}
+	table {
+		width: 100%;
+		border-collapse: separate;
+		border-bottom: 1px solid $alto;
+		font-size: spvw(18);
+		@include mqMin($tabletSmall) {
+			font-size: 18px;
+		}
+	}
+	thead {
+		th {
+			background-color: $concrete;
+		}
+	}
+	th,
+	td {
+		border-top: 1px solid $alto;
+		padding: spvw(20);
+		@include mqMin($tabletSmall) {
+			padding: 20px;
+		}
+	}
+	th {
+		background-color: $wildSand;
+		font-weight: bold;
+	}
+	td {
+		background-color: $white;
+	}
+	//リスト化
+	table, thead, tfoot,tbody, tr , th, td {
+		@include mqMax($smart) {
+			width: 100%;
+			display: block;
+		}
+	}
+	tr {
+		@include mqMax($smart) {
+			overflow: hidden;
+		}
+	}
+	th, td {
+		@include mqMax($smart) {
+			float: left;
+			clear: both;
+		}
+	}
+}

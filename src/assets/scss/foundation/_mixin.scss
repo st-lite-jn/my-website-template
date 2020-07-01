@@ -1,0 +1,144 @@
+
+//メディアクエリ
+@mixin mqMax($break-point) {
+	@media screen and (max-width: $break-point) {
+		@content;
+	}
+}
+
+@mixin mqMin($break-point) {
+	@media screen and (min-width: $break-point) {
+		@content;
+	}
+}
+@mixin mqMinMax($break-point-min, $break-point-max) {
+	@media screen and (min-width: $break-point-min) and (max-width: $break-point-max) {
+		@content;
+	}
+}
+// スマートフォン用のVWの計算
+// デザインに合わせて$referenceValueを編集
+$referenceValue:360;
+@function spvw($value) {
+	@return ($value / $referenceValue * 100)+vw;
+}
+//container
+@mixin baseContainer {
+	box-sizing: border-box;
+	max-width: $sxga;
+	margin-right: auto;
+	margin-left: auto;
+	padding-left: $paddingWide;
+	padding-right: $paddingWide;
+}
+@mixin containerSmart {
+	width: auto;
+	padding-right: spvw($padding);
+	padding-left: spvw($padding);
+}
+//デフォルトのアニメーション時間
+@mixin transitionDefalt {
+	transition: all $transition $easing;
+}
+
+//Flexbox
+@mixin flexNowrapSb {
+	display: flex;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	flex-shrink:0;
+}
+@mixin flexWrapSb {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	flex-shrink:0;
+}
+@mixin flexNowrapCenter {
+	display: flex;
+	flex-wrap: nowrap;
+	justify-content: center;
+	flex-shrink:0;
+}
+@mixin flexWrapCenter {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	flex-shrink:0;
+}
+@mixin flexNowrapFs {
+	display: flex;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	flex-shrink:0;
+}
+@mixin flexWrapFs {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	flex-shrink:0;
+}
+//clearfix
+@mixin clearfix {
+	zoom: 1;
+	&:before,
+	&:after {
+		content: "";
+		display: table;
+	}
+	&:after {
+		clear: both;
+	}
+}
+//要素を隠す
+@mixin hidden($speed:$transition) {
+	max-height: 0;
+	overflow: hidden;
+	transition: max-height $speed $easing;
+}
+//要素を消す
+@mixin none {
+	position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    overflow: hidden;
+    padding: 0;
+    clip: rect(0, 0, 0, 0);
+}
+//コンポーネント余白
+@mixin gatter {
+	margin-bottom: #{spvw(16)};
+	@include mqMin($tabletSmall) {
+		margin-bottom: 16px;
+	}
+}
+@mixin gatterBlock {
+	margin-bottom: #{spvw(32)};
+	@include mqMin($tabletSmall) {
+		margin-bottom: 40px;
+	}
+}
+//アイコン付きテキスト
+@mixin iconText($sizeSm,$sizeMd,$marginSm,$marginMd,$align:middle) {
+	padding-left: spvw($sizeSm);
+	text-indent: -#{spvw($sizeSm)};
+	@include mqMin($tabletSmall) {
+		padding-left: #{$sizeMd}px;
+		text-indent: -#{$sizeMd}px;
+	}
+	&::before {
+		content: '';
+		display: inline-block;
+		vertical-align: $align;
+		width: spvw($sizeSm - $marginSm);
+		height: spvw($sizeSm - $marginSm);
+		margin-right: #{$marginSm}px;
+		@include mqMin($tabletSmall) {
+			width: #{$sizeMd - $marginMd}px;
+			height: #{$sizeMd - $marginMd}px;
+			margin-right: #{$marginMd}px;
+		}
+	}
+}

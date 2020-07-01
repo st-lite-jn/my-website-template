@@ -1,0 +1,70 @@
+.p-card {
+	&__head {
+	}
+	&__figure {
+		margin-bottom: spvw(12);
+		text-align: center;
+		line-height: 0;
+		@include mqMin($tabletSmall) {
+			margin-bottom: 16px;
+		}
+		> div {
+			max-width: 100% !important; //動画用インラインスタイル打ち消しのため
+		}
+		> img {
+			width: 100%;
+		}
+	}
+	&__title {
+		margin-bottom: spvw(8);
+		line-height: 1.5;
+		font-size: spvw(20);
+		font-weight: normal;
+		@include mqMin($tabletSmall) {
+			margin-bottom: 8px;
+			line-height: 1.33;
+			font-size: 24px;
+		}
+	}
+	&__body {
+		margin-bottom: 0;
+		& > [class] {
+			@include gatter;
+		}
+		& > :last-child {
+			margin-bottom: 0;
+		}
+	}
+	&__name {
+		line-height: 1.33;
+		font-size: spvw(24);
+		@include mqMin($tabletSmall) {
+			line-height: 1.29;
+			font-size: 28px;
+		}
+	}
+	&__job {
+		margin-bottom: spvw(8);
+		line-height: 1.4;
+		font-size: spvw(20);
+		@include mqMin($tabletSmall) {
+			margin-bottom: 8px;
+			line-height: 1.33;
+			font-size: 24px;
+		}
+	}
+	&__post {
+	}
+	//丸型
+	&--circle {
+		text-align: center;
+	}
+	&--circle &__figure {
+		img {
+			border-radius: 50%;
+			@include mqMin($tabletSmall) {
+				max-width: 46.1%;
+			}
+		}
+	}
+}

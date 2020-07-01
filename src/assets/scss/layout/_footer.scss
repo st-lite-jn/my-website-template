@@ -1,0 +1,278 @@
+.footer {
+	margin-top: auto;
+	&__sitemap {
+		background-color: $concrete;
+	}
+	&__sitemap-in {
+		@include mqMin($wide) {
+			@include baseContainer;
+			display: flex;
+			padding-top: 32px;
+			padding-bottom: 32px;
+		}
+	}
+	&__menu,
+	&__submenu {
+		line-height: 1.3;
+		font-size: spvw(18);
+		@include mqMin($tabletSmall) {
+			font-size: 18px;
+		}
+	}
+	&__menu {
+		@include mqMin($wide) {
+			width: 75%;
+		}
+	}
+	&__menu-list {
+		@include mqMin($wide) {
+			display: flex;
+		}
+	}
+	&__menu-item {
+		@include mqMin($wide) {
+			flex: 1;
+			padding-right: 20px;
+		}
+	}
+	&__menu-trigger {
+		display: block;
+		border-bottom: 1px solid $alto;
+		@include mqMin($wide) {
+			border-bottom: none;
+		}
+	}
+	&__menu-link,
+	&__submenu-link {
+		position: relative;
+		display: block;
+		padding: spvw(13) spvw($padding * 2) spvw(13) spvw($padding);
+		font-weight: bold;
+		color: $mineShaft;
+		@include mqMin($tabletSmall) {
+			padding: 13px $paddingWide * 2 13px $paddingWide;
+		}
+		@include mqMin($wide) {
+			padding: 0;
+		}
+	}
+	&__menu-link[role="button"],
+	&__submenu-link[role="button"] {
+		pointer-events: none;
+		@include mqMin($wide) {
+			pointer-events: auto;
+		}
+	}
+	&__menu-link[role="button"]::before,
+	&__menu-link[role="button"]::after {
+		content: '';
+		flex-shrink: 0;
+		position: absolute;
+		right: spvw($padding);
+		top: 0;
+		bottom: 0;
+		margin: auto;
+		display: inline-block;
+		width: spvw(14);
+		height: spvw(14);
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: contain;
+		transition: opacity $transitionFast $easing;
+		@include mqMin($tabletSmall) {
+			width: 14px;
+			height: 14px;
+		}
+		@include mqMin($wide) {
+			content: none;
+		}
+	}
+	&__menu-link[role="button"]::before {
+		background-image: url(/assets/img/ico_vertical.svg);
+	}
+	&__menu-link[role="button"]::after {
+		background-image: url(/assets/img/ico_column.svg);
+	}
+	&__menu-trigger.is-active &__menu-link[role="button"]::before {
+		opacity: 0;
+	}
+	&__menu-link {
+		@include mqMin($wide) {
+			margin-bottom: 12px;
+			line-height: 1.7;
+		}
+	 }
+	&__submenu {
+		background-color: $mercury;
+		display: none;
+		@include mqMin($wide) {
+			display: block;
+			background: none;
+			line-height: 1.5;
+			font-size: 16px;
+		}
+		>*:last-child {
+			margin-bottom: 0;
+		}
+	}
+	&__submenu &__submenu {
+		background-color: $altoDark;
+		@include mqMin($wide) {
+			display: none;
+		}
+	}
+	&__submenu &__submenu &__submenu-item,
+	&__submenu &__submenu &__submenu-title {
+		border-color: $silverBright;
+	}
+	&__submenu-title {
+		display: block;
+		border-bottom: 1px solid $silver;
+		padding: spvw(13) spvw($padding);
+		font-weight: bold;
+		color: $mineShaft;
+		@include mqMin($tabletSmall) {
+			padding: 13px $paddingWide;
+		}
+		@include mqMin($wide) {
+			display: none;
+		}
+	}
+	&__submenu-list {
+		@include mqMin($wide) {
+			margin-bottom: 16px;
+		}
+	}
+	&__submenu-item {
+		border-bottom: 1px solid $silver;
+		@include mqMin($wide) {
+			border-bottom: none;
+		}
+	}
+	&__submenu-item + &__submenu-item {
+		@include mqMin($wide) {
+			margin-top: 8px;
+		}
+	}
+	&__submenu-link {
+		font-weight: normal;
+	}
+	&__sitemap-item {
+		padding: spvw(24) 0 0;
+		@include mqMin($tabletSmall) {
+			padding: 24px 0 0;
+		}
+		@include mqMin($wide) {
+			width: 25%;
+			padding: 0;
+		}
+	}
+	&__sitemap-title {
+		display: none;
+		@include mqMin($wide) {
+			display: block;
+			margin-bottom: 14px;
+			line-height: 1.7;
+			font-size: 18px;
+			font-weight: bold;
+			color: $mineShaft;
+		}
+	}
+	&__sns {
+		display: flex;
+		justify-content: space-around;
+		padding-bottom: spvw(24);
+		@include mqMin($tabletSmall) {
+			padding-bottom: 24px;
+		}
+		@include mqMin($wide) {
+			flex-wrap: wrap;
+			justify-content: flex-start;
+			margin-top: -14px;
+			padding-bottom: 40px;
+		}
+	}
+	&__sns-item {
+		font-size: 0;
+		@include mqMin($wide) {
+			width: 32px;
+			margin-right: 20px;
+			margin-top: 14px;
+		}
+	}
+	&__sns-image {
+		width: spvw(32);
+		@include mqMin($tabletSmall) {
+			width: 32px;
+		}
+	}
+	&__in {
+		padding: spvw($padding);
+		@include mqMin($tabletSmall) {
+			display: flex;
+			justify-content: space-between;
+			align-items: baseline;
+			padding: 11px $paddingWide;
+		}
+		@include mqMin($wide) {
+			@include baseContainer;
+		}
+	}
+	&__navi {
+		display: flex;
+		flex-wrap: wrap;
+		line-height: 1.3;
+		margin: 0 0 -#{spvw(20)} -#{spvw(32)};
+		font-size: spvw(14);
+		@include mqMin($tabletSmall) {
+			margin: 0 0 -20px -24px;
+			font-size: 14px;
+		}
+	}
+	&__navi-item {
+		margin: 0 0 spvw($padding) spvw(32);
+		@include mqMin($tabletSmall) {
+			margin: 0 0 20px 24px;
+		}
+	}
+	&__navi-link {
+		color: $doveGray;
+	}
+	&__copy {
+		line-height: 1.3;
+		margin-top: spvw(20);
+		font-size: spvw(12);
+		color: $doveGray;
+		@include mqMin($tabletSmall) {
+			flex-shrink: 0;
+			margin: 0 0 0 24px;
+			font-size: 12px;
+		}
+	}
+	&__lang-message {
+		margin-top: spvw(16);
+		text-align: center;
+		color: $doveGray;
+		font-size: spvw(14);
+		@include mqMin($tabletSmall) {
+			margin-top: 16px;
+			font-size: 14px;
+		}
+	}
+}
+.footer-add-menu {
+	display: block;
+	padding: spvw(24) spvw($padding);
+	border-top: solid 1px $alto;
+	@include mqMin($tabletSmall) {
+		padding:24px 39px;
+	}
+	@include mqMin($wide) {
+		padding:0;
+		border-top: none;
+	}
+	&__link {
+		color: $mineShaft;
+		font-weight: bold;
+	}
+}

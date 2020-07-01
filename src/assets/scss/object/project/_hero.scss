@@ -1,0 +1,64 @@
+//ヒーローエリア
+.p-hero {
+	display: flex;
+	flex-direction: column-reverse;
+	@include gatterBlock;
+	@include mqMin($tabletSmall) {
+		position: relative;
+		display: block;
+	}
+	&__body {
+		text-align: center;
+		padding-top: spvw(20);
+		padding-bottom: spvw(20);
+		background-color: $wildSand;
+		:last-child {
+			margin-bottom: 0;
+		}
+		@include mqMin($tabletSmall) {
+			position: absolute;
+			left: 0;
+			bottom: 0;
+			width: 100%;
+			padding-top: 60px;
+			padding-bottom: 40px;
+			background: linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 100%);
+			color: $white;
+		}
+	}
+	&__sub {
+		line-height: 1.44;
+		font-size: spvw(20);
+		@include mqMin($tabletSmall) {
+			line-height: 1.33;
+			font-size: 24px;
+		}
+	}
+	&__title {
+		margin-bottom: spvw(8);
+		line-height: 1.29;
+		font-size: spvw(28);
+		font-weight: bold;
+		@include mqMin($tabletSmall) {
+			margin-bottom: 16px;
+			line-height: 1.22;
+			font-size: 40px;
+		}
+	}
+	&__text {
+		br {
+			@include mqMax($smart) {
+				display: none;
+			}
+		}
+	}
+	&__figure {
+		@include mqMin($tabletSmall) {
+		}
+	}
+	&__figure-image {
+		width: 100%;
+		@include mqMin($tabletSmall) {
+		}
+	}
+}

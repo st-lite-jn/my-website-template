@@ -1,0 +1,212 @@
+.agp-heading-02 {
+	margin-bottom: spvw(8);
+	line-height: 1.29;
+	font-size: spvw(28);
+	@include mqMin($tabletSmall) {
+		margin-bottom: 16px;
+		line-height: 1.22;
+		font-size: 36px;
+	}
+}
+.agp-heading-03 {
+	margin-bottom: spvw(8);
+	line-height: 1.33;
+	font-size: spvw(24);
+	font-weight: bold;
+	@include mqMin($tabletSmall) {
+		margin-bottom: 16px;
+		line-height: 1.29;
+		font-size: 28px;
+	}
+}
+.agp-heading-04 {
+	margin-bottom: spvw(8);
+	line-height: 1.4;
+	font-size: spvw(20);
+	font-weight: bold;
+	@include mqMin($tabletSmall) {
+		margin-bottom: 16px;
+		line-height: 1.33;
+		font-size: 24px;
+	}
+}
+.agp-heading-05 {
+	margin-bottom: spvw(8);
+	line-height: 1.44;
+	font-size: spvw(18);
+	font-weight: bold;
+	@include mqMin($tabletSmall) {
+		margin-bottom: 16px;
+		line-height: 1.4;
+		font-size: 20px;
+	}
+}
+.agp-tbl {
+	width: 100%;
+	@include gatterBlock;
+	table {
+		width: 100%;
+		border-collapse: collapse;
+		border-right: 1px solid $alto;
+		border-bottom: 1px solid $alto;
+		@include mqMin($tabletSmall) {
+			table-layout: fixed;
+		}
+		th,td {
+			border: 1px solid $alto;
+			padding: spvw(12);
+			@include mqMin($tabletSmall) {
+				padding: 20px;
+			}
+		}
+		thead {
+			th {
+				font-weight: bold;
+				font-size: spvw(16);
+				background-color: $concrete;
+				@include mqMin($tabletSmall) {
+					font-size: 18px;
+				}
+			}
+		}
+		tbody {
+			th {
+				background-color: rgba(darken($wildSand, 13%), 0.2);
+				font-weight: bold;
+				font-size: spvw(12);
+				@include mqMin($tabletSmall) {
+					background-color: $wildSand;
+					font-size: 18px;
+				}
+			}
+			td {
+				>*:last-child{
+					margin-bottom: 0;
+				}
+			}
+		}
+	}
+}
+
+.agp-link-scroll {
+	&::before{
+		display: inline-block;
+		vertical-align: middle;
+		content: '';
+		background: url(/assets/img/ico_scroll.svg) no-repeat 0 0;
+		background-size: contain;
+		width: spvw(15);
+		height: spvw(15);
+		margin-right: spvw(8);
+		@include mqMin($tabletSmall) {
+			width: 15px;
+			height: 15px;
+			margin-right: 8px;
+		}
+	}
+	&__num {
+		display: inline-block;
+		vertical-align: middle;
+		width: spvw(24);
+		@include mqMin($tabletSmall) {
+			width: 32px;
+		}
+	}
+	&__txt {
+		display: inline-block;
+		width: calc(100% - #{spvw(47)} );
+		vertical-align: middle;
+		@include mqMin($tabletSmall) {
+			width: calc(100% - 55px);
+		}
+	}
+}
+
+.agp-list {
+	&--circle {
+		@include gatterBlock;
+		.agp-list-item{
+			margin-bottom: spvw(8);
+			padding-left: spvw(16);
+			text-indent: - spvw(16);
+			font-size: spvw(12);
+			@include mqMin($tabletSmall) {
+				padding-left: 16px;
+				text-indent: -16px;
+				margin-bottom: 8px;
+				font-size: 14px;
+			}
+			&:last-child{
+				margin-bottom: 0;
+			}
+			&::before{
+				background-color: $doveGray;
+				border-radius: 50%;
+				content: '';
+				display: inline-block;
+				vertical-align: middle;
+				width: spvw(4);
+				height: spvw(4);
+				margin-right: spvw(12);
+				@include mqMin($tabletSmall) {
+					width: 4px;
+					height: 4px;
+					margin-right: 12px;
+				}
+			}
+		}
+		& & {
+			margin-top: spvw(8);
+			margin-bottom: 0;
+			@include mqMin($tabletSmall) {
+				margin-top: 8px;
+			}
+		}
+	}
+	&--order {
+		@include gatterBlock;
+		.agp-list-item{
+			margin-bottom: spvw(8);
+			@include mqMin($tabletSmall) {
+				margin-bottom: 8px;
+			}
+			font-size: 0;
+			&__num {
+				display: inline-block;
+				vertical-align: top;
+				width: spvw(40);
+				font-size: spvw(16);
+				@include mqMin($tabletSmall) {
+					font-size: 18px;
+					width: 40px;
+				}
+			}
+			&__txt {
+				display: inline-block;
+				vertical-align: top;
+				font-size: spvw(16);
+				width: calc(100% - #{spvw(40)});
+				@include mqMin($tabletSmall) {
+					font-size: 18px;
+					width: calc(100% - 40px);
+				}
+				> * {
+					display: inline;
+				}
+			}
+		}
+	}
+}
+
+.agp-box {
+	@include gatterBlock;
+	border: 1px solid $alto;
+	background-color: #F7F7F7;
+	padding: spvw(24) spvw(32);
+	@include mqMin($tabletSmall) {
+		padding: 24px 40px;
+	}
+	>*:last-child{
+		margin-bottom: 0;
+	}
+}

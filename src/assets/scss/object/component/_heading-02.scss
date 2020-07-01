@@ -1,0 +1,10 @@
+.c-heading-02 {
+	margin-bottom: spvw(8);
+	line-height: 1.29;
+	font-size: spvw(28);
+	@include mqMin($tabletSmall) {
+		margin-bottom: 16px;
+		line-height: 1.22;
+		font-size: 36px;
+	}
+}

@@ -1,0 +1,15 @@
+.main {
+	padding-bottom: spvw(64);
+	@include mqMin($tabletSmall) {
+		padding-bottom: 80px;
+	}
+	& > :last-child {
+		margin-bottom: 0;
+	}
+	&--home {
+		padding-bottom: spvw(16);
+		@include mqMin($tabletSmall) {
+			padding-bottom: 20px;
+		}
+	}
+}

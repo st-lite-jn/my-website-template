@@ -1,0 +1,74 @@
+.ofc-header{
+	@include flexWrapFs;
+	@include mqMin($tabletSmall) {
+		@include flexNowrapSb;
+		align-items: flex-start;
+	}
+}
+.ofc-header-info {
+	width: 100%;
+	@include mqMax($smart) {
+		order:10;
+	}
+	@include mqMin($tabletSmall) {
+		flex: 1;
+	}
+}
+.ocf-other-positon {
+	@include mqMax($smart) {
+		display: block;
+	}
+}
+.ofc-header-pic {
+	width: 100%;
+	@include mqMax($smart) {
+		order:1;
+		margin-bottom: #{spvw(32)};
+	}
+	@include mqMin($tabletSmall) {
+		width: 280px;
+	}
+	&__figure {
+		img {
+			width: 100%;
+			border-radius: 50%;
+		}
+	}
+}
+.ofc-section {
+	@include gatterBlock;
+}
+.ofc-heading {
+	margin-bottom: spvw(8);
+	line-height: 1.33;
+	font-size: spvw(24);
+	@include mqMin($tabletSmall) {
+		margin-bottom: 8px;
+		line-height: 1.28;
+		font-size: 28px;
+	}
+}
+.ofc-txt {
+	line-height: 1.44;
+	font-size: spvw(16);
+	@include mqMin($tabletSmall) {
+		line-height: 1.44;
+		font-size: 18px;
+	}
+}
+.ofc-career {
+	table {
+		width: 100%;
+		tbody {
+			th,td {
+				vertical-align: top;
+			}
+			th {
+				width: 128px;
+				margin-right: 32px;
+				white-space: nowrap;
+			}
+		}
+	}
+
+}

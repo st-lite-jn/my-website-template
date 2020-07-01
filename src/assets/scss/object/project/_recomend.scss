@@ -1,0 +1,81 @@
+//関連リンク
+.p-recomend {
+	padding-top: spvw(32);
+	padding-bottom: spvw(32);
+	background-color: $wildSand;
+	@include mqMin($tabletSmall) {
+		padding-top: 34px;
+		padding-bottom: 34px;
+	}
+	&__in {
+		@include mqMin($tabletSmall) {
+			overflow: hidden;
+		}
+	}
+	&__head {
+		@include mqMin($tabletSmall) {
+			display: flex;
+			justify-content: space-between;
+		}
+	}
+	&__title {
+		font-weight: normal;
+	}
+	&__navi {
+		display: none;
+		@include mqMin($tabletSmall) {
+			display: flex;
+			justify-content: space-between;
+			width: 84px;
+			height: 32px;
+			margin-left: 20px;
+		}
+	}
+	&__arrow {
+		@include mqMin($tabletSmall) {
+			display: inline-block;
+			position: static;
+			width: 32px;
+			height: 32px;
+			margin: 0;
+			background-size: contain;
+			transition: opacity $transitionFast $easing;
+		}
+		&:hover {
+			@include mqMin($tabletSmall) {
+				opacity: 0.3;
+			}
+		}
+		&.swiper-button-lock {
+			display: none;
+		}
+	}
+	&__arrow--prev {
+		@include mqMin($tabletSmall) {
+			background-image: url(/assets/img/ico_prev-circle.svg);
+		}
+	}
+	&__arrow--next {
+		@include mqMin($tabletSmall) {
+			background-image: url(/assets/img/ico_next-circle.svg);
+		}
+	}
+	&__container {
+		@include mqMin($tabletSmall) {
+			overflow: visible;
+		}
+	}
+	&__wrapper {
+		width: auto;
+		margin-bottom: 0;
+		@include mqMin($tabletSmall) {
+			flex-wrap: nowrap;
+		}
+	}
+	.p-card__title {
+		font-size: spvw(16);
+		@include mqMin($tabletSmall) {
+			font-size: 18px;
+		}
+	}
+}

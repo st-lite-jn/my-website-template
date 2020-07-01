@@ -1,0 +1,32 @@
+//スタイルガイド
+.c-guide {
+	margin: spvw(40) 0;
+	padding-top: spvw(17);
+	padding-bottom: spvw(17);
+	background-color: $mineShaft;
+	line-height: 1.3;
+	font-size: spvw(18);
+	font-weight: bold;
+	color: $white;
+	@include mqMin($tabletSmall) {
+		margin: 40px 0;
+		padding-top: 17px;
+		padding-bottom: 17px;
+		font-size: 36px;
+	}
+	+ [class] {
+		margin-top: 0;
+	}
+	.container + & {
+		margin-top: spvw(40);
+		@include mqMin($tabletSmall) {
+			margin-top: 40px;
+		}
+	}
+	& + .container > [class]:first-child {
+		margin-top: 0;
+	}
+	~ :last-child {
+		margin-bottom: 0;
+	}
+}

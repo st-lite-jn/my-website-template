@@ -1,0 +1,119 @@
+.c-link {
+	$this: #{&};
+	&::after {
+		display: inline-block;
+		vertical-align: middle;
+		margin-left: spvw(12);
+		background-position: 0 0;
+		background-repeat: no-repeat;
+		background-size: contain;
+		text-indent: -1000%;
+		overflow: hidden;
+		white-space: nowrap;
+		color: transparent;
+		@include mqMin($tabletSmall) {
+			margin-left: 12px;
+		}
+	}
+	&.dir-rtl {
+		&::after {
+			margin-left: 0;
+			margin-right: spvw(12);
+			$rtl: #{&};
+			@include mqMin($tabletSmall) {
+				margin-left: 0;
+				margin-right: 12px;
+			}
+		}
+	}
+	//別窓アイコン
+	&--blank {
+		@extend #{$this};
+		&::after {
+			content: 'window open';
+			width: spvw(17);
+			height: spvw(17);
+			vertical-align: baseline;
+			background-image: url(/assets/img/ico_blank.svg);
+			@include mqMin($tabletSmall) {
+				width: 17px;
+				height: 17px;
+			}
+		}
+	}
+	//PDFアイコン
+	&--pdf {
+		@extend #{$this};
+		&::after {
+			content: 'PDF';
+			width: spvw(14);
+			height: spvw(17);
+			vertical-align: middle;
+			background-image: url(/assets/img/ico_pdf.svg);
+			@include mqMin($tabletSmall) {
+				width: 14px;
+				height: 17px;
+			}
+		}
+	}
+	//エクセルアイコン
+	&--xls {
+		@extend #{$this};
+		&::after {
+			content: 'Excel';
+			width: spvw(14);
+			height: spvw(17);
+			vertical-align: middle;
+			background-image: url(/assets/img/ico_xls.svg);
+			@include mqMin($tabletSmall) {
+				width: 14px;
+				height: 17px;
+			}
+		}
+	}
+	//ワードアイコン
+	&--doc {
+		@extend #{$this};
+		&::after {
+			content: 'Word';
+			width: spvw(14);
+			height: spvw(17);
+			vertical-align: middle;
+			background-image: url(/assets/img/ico_doc.svg);
+			@include mqMin($tabletSmall) {
+				width: 14px;
+				height: 17px;
+			}
+		}
+	}
+	//ダウンロードアイコン
+	&--download {
+		@extend #{$this};
+		&::after {
+			content: 'Download';
+			width: spvw(17);
+			height: spvw(17);
+			vertical-align: baseline;
+			background-image: url(/assets/img/ico_download.svg);
+			@include mqMin($tabletSmall) {
+				width: 17px;
+				height: 17px;
+			}
+		}
+	}
+	//動画アイコン
+	&--movie {
+		@extend #{$this};
+		&::after {
+			content: 'Movie';
+			width: spvw(18);
+			height: spvw(12);
+			vertical-align: baseline;
+			background-image: url(/assets/img/ico_movie.svg);
+			@include mqMin($tabletSmall) {
+				width: 18px;
+				height: 12px;
+			}
+		}
+	}
+}
