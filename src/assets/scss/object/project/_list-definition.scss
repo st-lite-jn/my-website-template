@@ -1,9 +1,0 @@
-.p-list-definition {
-	@include gatterBlock;
-	&__title {
-		font-weight: bold;
-	}
-	&__body {
-		@include gatter;
-	}
-}

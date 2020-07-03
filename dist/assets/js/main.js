@@ -1,1 +1,0 @@
-let elmBody=document.getElementById("body");function bodyFix(){elmBody.scrollTop;elmBody.setAttribute("style","position:fixed;width:100%;z-index:1;top:${-scrollPosi}")}console.log(elmBody),elmBody.setAttribute("style","color:red"),bodyFix();
