@@ -1,17 +1,10 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>!!!!サイトタイトル | サンプルページ</title>
-	<meta name="description" content="!!!!サイトタイトル">
-	<link rel="stylesheet" href="/assets/css/style.min.css">
-</head>
-<body>
-<header class="l-container">
-	<h1 class="c-heading-xl">タイトル</h1>
-	<h1 class="c-heading-xl">タイトル2</h1>
-</header>
+<% const localmeta = {
+    title: '!!!!サイトタイトル',
+	desc: 'サイトディスクリプション',
+	bodyID:'body'
+  };
+%><%- include('../assets/module/_head',{meta:localmeta}) %>
+<%- include('../assets/module/_header') %>
 	<div class="l-container p-grid">
 		<figure class="p-grid__box">
 			<img src="./assets/img/cat_01.jpg" alt="">
@@ -55,9 +48,4 @@
 		</figure>
 	</div>
 	
-	<footer class="l-footer">
-    <p>copyright</p>
-</footer>
-<script src="/assets/js/main.min.js"></script>
-</body>
-</html>
+	<%- include('../assets/module/_footer') %>

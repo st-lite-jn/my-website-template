@@ -2,6 +2,7 @@
 const {src,dest,watch,series,parallel} = require('gulp');
 const browserSync = require('browser-sync').create();
 const uglify = require('gulp-uglify-es').default;
+const cssImport = require('postcss-import');
 //gulp-load-pluginsをインクルード
 const loadPlugins = require('gulp-load-plugins');
 const $ = loadPlugins();
@@ -9,9 +10,15 @@ const $ = loadPlugins();
 const path = require("./path.js");
 
 const styleTask = () => {
+	const plugins = [
+		cssImport({
+			path: [ 'node_modules' ]
+		})
+	];
 	return src(path.style.src)
 	.pipe($.sassGlob())
 	.pipe($.sass())
+	.pipe($.postcss(plugins))
 	.pipe($.rename({extname:".min.css"}))
 	.pipe(dest(path.dist.css));
 }
@@ -30,8 +37,8 @@ const serverTask = (cb) => {
 const fileWatchTask = () => {
 	watch(path.style.src, parallel(styleTask));
 	watch(path.script.src,parallel(scriptTask));
-	watch([path.ejs.file,path.ejs.module],parallel(ejsTask));
-	watch(["./dist/**/*.html", ...path.script.dist, ...path.style.dist],parallel(bsReloadTask));
+	watch([path.ejs.file,path.ejs.module],parallel(ejsTask),series(bsReloadTask));
+	watch([...path.script.dist, ...path.style.dist],parallel(bsReloadTask));
 }
 
 //ブラウザリロードタスク
