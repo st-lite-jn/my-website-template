@@ -1,14 +1,14 @@
 module.exports = {
 	dist : {
-		root:"./dist",
-		js : "./dist/assets/js",
-		css : "./dist/assets/css",
-		img :"./dist/assets/img"
+		root:"./dist/",
+		js : "./dist/assets/js/",
+		css : "./dist/assets/css/",
+		img :"./dist/assets/img/"
 	},
 	src : {
-		js : "./src/assets/js",
-		css : "./src/assets/css",
-		img :"./src/assets/img"
+		js : "./src/assets/js/",
+		css : "./src/assets/scss/",
+		img :"./src/assets/img/"
 	},
 	script:{
 		dist : ["./dist/assets/js/**/*.js","./dist/assets/js/**/*.min.js"],

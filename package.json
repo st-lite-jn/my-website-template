@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/st-lite-jn/grid-template#readme",
   "devDependencies": {
+    "animate.css": "^4.1.0",
     "browser-sync": "^2.26.7",
     "gulp": "^4.0.2",
     "gulp-concat": "^2.6.1",
