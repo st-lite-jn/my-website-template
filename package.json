@@ -1,5 +1,5 @@
 {
-  "name": "learning-grid-layout",
+  "name": "my-website-template",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,12 +10,8 @@
     "type": "git",
     "url": "git+https://github.com/st-lite-jn/grid-template.git"
   },
-  "author": "",
+  "author": "jey",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/st-lite-jn/grid-template/issues"
-  },
-  "homepage": "https://github.com/st-lite-jn/grid-template#readme",
   "devDependencies": {
     "animate.css": "^4.1.0",
     "browser-sync": "^2.26.7",
