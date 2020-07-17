@@ -1,0 +1,12 @@
+<nav class="p-breadcrumb">
+<ol>
+	<li><a href="/">Home</a></li>
+<% breadcrumbs.forEach(function(breadcrumb,index){ %>
+<% if(index + 1 == breadcrumbs.length) { %>
+	<li><span><%= breadcrumb.label %></span></li>
+<% } else { %>
+	<li><a href="<%= breadcrumb.path%>"><%= breadcrumb.label %></a></li>
+<% } %>
+<% }); %>
+</ol>
+</nav>

@@ -1,8 +1,18 @@
-<% const localmeta = {
-    title: '!!!!サイトタイトル',
-	desc: 'サイトディスクリプション',
+<%
+const localmeta = {
+    title: 'ページタイトル',
+	desc: 'ページディスクリプション',
 	bodyID:'body'
-  };
+};
+const localbreadcrumbs = [
+	{
+		label:'ページタイトルA',
+		path:'/aboutus/'
+	},{
+		label:'ページタイトル',
+		path:'/aboutus/now'
+	}
+];
 %><%- include('assets/module/_head',{meta:localmeta}) %>
 <%- include('assets/module/_header') %>
 	<div class="l-container p-grid">
@@ -47,5 +57,5 @@
 			<figcaption>キャプション11</figcaption>
 		</figure>
 	</div>
-	
-	<%- include('assets/module/_footer') %>
+<%- include('assets/module/_breadcrumb',{breadcrumbs:localbreadcrumbs}) %>
+<%- include('assets/module/_footer') %>
