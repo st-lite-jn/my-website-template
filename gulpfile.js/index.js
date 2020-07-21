@@ -1,24 +1,30 @@
 //gulpをインクルード
 const {src,dest,watch,series,parallel} = require('gulp');
-const browserSync = require('browser-sync').create();
-const uglify = require('gulp-uglify-es').default;
-const cssImport = require('postcss-import');
+
 //gulp-load-pluginsをインクルード
 const loadPlugins = require('gulp-load-plugins');
 const $ = loadPlugins();
+
+const browserSync = require('browser-sync').create();
+const uglify = require('gulp-uglify-es').default;
+const cssImport = require('postcss-import');
+const autoprefixer = require('autoprefixer');
+
 //パス情報をインクルード
 const path = require("./path.js");
 
 const styleTask = () => {
-	const plugins = [
+	const processors = [
 		cssImport({
 			path: [ 'node_modules' ]
-		})
+		}),
+		autoprefixer({})
 	];
 	return src(path.style.src)
 	.pipe($.sassGlob())
-	.pipe($.sass())
-	.pipe($.postcss(plugins))
+	.pipe($.sass().on('error', $.sass.logError))
+	.pipe($.postcss(processors))
+	.pipe($.cleanCss())
 	.pipe($.rename({extname:".min.css"}))
 	.pipe(dest(path.dist.css));
 }
@@ -50,6 +56,9 @@ const bsReloadTask = (cb) => {
 //JavaScript
 const scriptTask = () =>{
 	return src(path.script.src)
+	.pipe($.babel({
+		presets: ['@babel/preset-env']
+	}))
 	.pipe(uglify({}))
 	.pipe($.rename({extname:".min.js"}))
 	.pipe(dest(path.dist.js));
