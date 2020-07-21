@@ -1,0 +1,17 @@
+// -----------------------------------------------------------------
+// Mixin
+// -----------------------------------------------------------------
+@for $value from 0 to 25 {
+    .u-pt--#{$value * 4 } {
+		padding-top: 4px * $value;
+		@include mqMax($smart) {
+			padding-top: spvw(4 * $value);
+		}
+	}
+	.u-pb--#{$value * 4 } {
+		padding-bottom: 4px * $value;
+		@include mqMax($smart) {
+			padding-bottom: spvw(4 * $value);
+		}
+	}
+}

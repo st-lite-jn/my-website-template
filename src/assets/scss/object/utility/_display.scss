@@ -1,0 +1,12 @@
+.u-dp {
+	&--sp {
+		@include mqMin($tabletSmall) {
+			display: none !important;
+		}
+	}
+	&--pc {
+		@include mqMax($smart) {
+			display: none !important;
+		}
+	}
+}

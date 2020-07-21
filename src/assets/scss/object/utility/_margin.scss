@@ -1,0 +1,54 @@
+// -----------------------------------------------------------------
+// margin-topとmargin-bottomに対して0〜100pxまで定義
+// スマートフォンはvwに置き換え
+// -----------------------------------------------------------------
+@for $value from 0 to 25 {
+	.u-mt--#{$value * 4 } {
+		margin-top: 4px * $value;
+		@include mqMax($smart) {
+			margin-top: spvw(4 * $value);
+		}
+	}
+	.u-mb--#{$value * 4 } {
+		margin-bottom: 4px * $value;
+		@include mqMax($smart) {
+			margin-bottom: spvw(4 * $value);
+		}
+	}
+}
+.u-mt-wide {
+	margin-top: 80px;
+	@include mqMax($smart) {
+		margin-top: spvw(64);
+	}
+}
+.u-mt-middle {
+	margin-top: 40px;
+	@include mqMax($smart) {
+		margin-top: spvw(32);
+	}
+}
+.u-mt-short {
+	margin-top: 16px;
+	@include mqMax($smart) {
+		margin-top: spvw(16);
+	}
+}
+.u-mb-wide {
+	margin-bottom: 80px;
+	@include mqMax($smart) {
+		margin-bottom: spvw(64);
+	}
+}
+.u-mb-middle {
+	margin-bottom: 40px;
+	@include mqMax($smart) {
+		margin-bottom: spvw(32);
+	}
+}
+.u-mb-short {
+	margin-bottom: 16px;
+	@include mqMax($smart) {
+		margin-bottom: spvw(16);
+	}
+}

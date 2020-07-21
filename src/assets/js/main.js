@@ -1,6 +1,7 @@
 // let elmBody = document.getElementById("body");
 // console.log(elmBody);
-console.log("hello! world!");
+const v = "Hello";
+console.log(v);
 // elmBody.setAttribute("style","color:red");
 // bodyFix();
 // function bodyFix() {
