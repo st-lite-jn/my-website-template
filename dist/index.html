@@ -3,57 +3,34 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>ページタイトル | サンプルページ</title>
-	<meta name="description" content="ページタイトル">
+	<title>インデックス | サンプルページ</title>
+	<meta name="description" content="インデックス">
 	<link rel="stylesheet" href="/assets/css/style.min.css">
 </head>
 <body>
 <header class="l-container">
+	<h1 class="c-heading-xl">インデックスページ！</h1>
 	<h1 class="c-heading-xl">タイトル</h1>
-	<h1 class="c-heading-xl">タイトル2</h1>
 </header>
-	<div class="l-container p-grid">
-		<figure class="p-grid__box">
-			<img src="./assets/img/cat_01.jpg" alt="">
-			<figcaption>キャプション1</figcaption>
-		</figure>
-		<figure class="p-grid__box">
-			<img src="./assets/img/cat_01.jpg" alt="">
-			<figcaption>キャプション2</figcaption>
-		</figure>
-		<figure class="p-grid__box">
-			<img src="./assets/img/cat_01.jpg" alt="">
-			<figcaption>キャプション3</figcaption>
-		</figure>
-		<figure class="p-grid__box">
-			<img src="./assets/img/cat_01.jpg" alt="">
-			<figcaption>キャプション4</figcaption>
-		</figure>
-		<figure class="p-grid__box">
-			<img src="./assets/img/cat_01.jpg" alt="">
-			<figcaption>キャプション5</figcaption>
-		</figure>
-		<figure class="p-grid-bigbox">
-			<img src="./assets/img/cat_01.jpg" alt="">
-			<figcaption>キャプション6</figcaption>
-		</figure>
-		<figure class="p-grid__box">
-			<img src="./assets/img/cat_01.jpg" alt="">
-			<figcaption>キャプション7</figcaption>
-		</figure>
-		<figure class="p-grid__box">
-			<img src="./assets/img/cat_01.jpg" alt="">
-			<figcaption>キャプション8</figcaption>
-		</figure>
-		<figure class="p-grid__box">
-			<img src="./assets/img/cat_01.jpg" alt="">
-			<figcaption>キャプション9</figcaption>
-		</figure>
-		<figure class="p-grid__box">
-			<img src="./assets/img/cat_01.jpg" alt="">
-			<figcaption>キャプション11</figcaption>
-		</figure>
+
+<div class="p-carousel">
+	<div class="swiper-wrapper">
+		<picture class="swiper-slide">
+			<source media="(max-width:767px)" srcset="/assets/img/dog.jpg">
+			<source media="(min-width:768px)" srcset="/assets/img/cat.jpg">
+			<img src="/assets/img/cat.jpg" alt="">
+		</picture>
+		<picture class="swiper-slide">
+			<source media="(max-width:767px)" srcset="/assets/img/man.jpg">
+			<source media="(min-width:768px)" srcset="/assets/img/woman.jpg">
+			<img src="/assets/img/woman.jpg" alt="">
+		</picture>
 	</div>
+	<div class="swiper-button-prev" aria-label="Go to previous slide" role="button"></div>
+	<div class="swiper-button-next" aria-label="Go to Next slide" role="button"></div>
+	<div class="swiper-pagination" aria-label="Pagenations"></div>
+</div>
+
 <nav class="p-breadcrumb">
 <ol>
 	<li><a href="/">Home</a></li>
@@ -68,9 +45,12 @@
 
 </ol>
 </nav>
+
 <footer class="l-footer">
-    <p>copyright</p>
+    <p>copyright 2020 my website</p>
 </footer>
+<script src="/assets/js/bundle.min.js"></script>
 <script src="/assets/js/main.min.js"></script>
 </body>
 </html>
+

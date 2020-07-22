@@ -43,8 +43,8 @@ const serverTask = (cb) => {
 const fileWatchTask = () => {
 	watch(path.style.src, parallel(styleTask));
 	watch(path.script.src,parallel(scriptTask));
-	watch([path.ejs.file,path.ejs.module],parallel(ejsTask),series(bsReloadTask));
-	watch([...path.script.dist, ...path.style.dist],parallel(bsReloadTask));
+	watch([path.ejs.file,path.ejs.module]).on("change",series(ejsTask,bsReloadTask));
+	watch([...path.script.dist, ...path.style.dist],series(bsReloadTask));
 }
 
 //ブラウザリロードタスク
@@ -63,6 +63,20 @@ const scriptTask = () =>{
 	.pipe($.rename({extname:".min.js"}))
 	.pipe(dest(path.dist.js));
 }
+
+//JavaScriptBundle
+const scriptBundleTask = () =>{
+	return src(	[
+		"node_modules/jquery/dist/jquery.min.js", //jQuery 3.5.1
+		"node_modules/jquery-migrate/dist/jquery-migrate.min.js", //jQuery Migrate 3.1.0
+		"node_modules/swiper/dist/js/swiper.min.js", //Swiper 4.5.1
+		"node_modules/picturefill/dist/picturefill.min.js" //picturefill 3.0.3
+	])
+	.pipe($.concat('bundle.min.js'))
+	.pipe(uglify({}))
+	.pipe(dest(path.dist.js));
+}
+
 //EJS
 const ejsTask = () =>{
 	return src([path.ejs.file,"!" + path.ejs.module])
@@ -71,5 +85,5 @@ const ejsTask = () =>{
 	.pipe(dest(path.dist.root));
 }
 
-exports.default = series(parallel(ejsTask,styleTask,scriptTask),serverTask,fileWatchTask);
+exports.default = series(parallel(ejsTask,styleTask,scriptBundleTask,scriptTask),serverTask,fileWatchTask);
 exports.styleTask = styleTask;

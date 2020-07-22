@@ -1,6 +1,6 @@
 <%
 const localmeta = {
-    title: 'ページタイトル',
+    title: 'インデックス',
 	desc: 'ページディスクリプション',
 	bodyID:'body'
 };
@@ -15,47 +15,18 @@ const localbreadcrumbs = [
 ];
 %><%- include('assets/module/_head',{meta:localmeta}) %>
 <%- include('assets/module/_header') %>
-	<div class="l-container p-grid">
-		<figure class="p-grid__box">
-			<img src="./assets/img/cat_01.jpg" alt="">
-			<figcaption>キャプション1</figcaption>
-		</figure>
-		<figure class="p-grid__box">
-			<img src="./assets/img/cat_01.jpg" alt="">
-			<figcaption>キャプション2</figcaption>
-		</figure>
-		<figure class="p-grid__box">
-			<img src="./assets/img/cat_01.jpg" alt="">
-			<figcaption>キャプション3</figcaption>
-		</figure>
-		<figure class="p-grid__box">
-			<img src="./assets/img/cat_01.jpg" alt="">
-			<figcaption>キャプション4</figcaption>
-		</figure>
-		<figure class="p-grid__box">
-			<img src="./assets/img/cat_01.jpg" alt="">
-			<figcaption>キャプション5</figcaption>
-		</figure>
-		<figure class="p-grid-bigbox">
-			<img src="./assets/img/cat_01.jpg" alt="">
-			<figcaption>キャプション6</figcaption>
-		</figure>
-		<figure class="p-grid__box">
-			<img src="./assets/img/cat_01.jpg" alt="">
-			<figcaption>キャプション7</figcaption>
-		</figure>
-		<figure class="p-grid__box">
-			<img src="./assets/img/cat_01.jpg" alt="">
-			<figcaption>キャプション8</figcaption>
-		</figure>
-		<figure class="p-grid__box">
-			<img src="./assets/img/cat_01.jpg" alt="">
-			<figcaption>キャプション9</figcaption>
-		</figure>
-		<figure class="p-grid__box">
-			<img src="./assets/img/cat_01.jpg" alt="">
-			<figcaption>キャプション11</figcaption>
-		</figure>
+<div class="p-carousel">
+	<div class="swiper-wrapper">
+		<picture class="swiper-slide">
+			<source media="(max-width:767px)" srcset="/assets/img/dog.jpg">
+			<source media="(min-width:768px)" srcset="/assets/img/cat.jpg">
+			<img src="/assets/img/cat.jpg" alt="猫">
+		</picture>
 	</div>
+	<div class="swiper-button-prev" aria-label="Go to previous slide" role="button"></div>
+	<div class="swiper-button-next" aria-label="Go to Next slide" role="button"></div>
+	<div class="swiper-pagination" aria-label="Pagenations"></div>
+</div>
+
 <%- include('assets/module/_breadcrumb',{breadcrumbs:localbreadcrumbs}) %>
 <%- include('assets/module/_footer') %>
