@@ -9,6 +9,34 @@ const browserSync = require('browser-sync').create();
 const uglify = require('gulp-uglify-es').default;
 const cssImport = require('postcss-import');
 const autoprefixer = require('autoprefixer');
+const del = require('del');
+
+//開発環境か公開環境かのフラグ
+const isProd = process.env.NODE_ENV === "production";
+let taskConfig = new Object();
+if(isProd) {
+	taskConfig = {
+		sourcemaps :{
+			flag : {
+				sourcemaps :false
+			},
+			path : {
+				sourcemaps : ""
+			}
+		}
+	}
+} else {
+	taskConfig = {
+		sourcemaps :{
+			flag : {
+				sourcemaps :true
+			},
+			path : {
+				sourcemaps : "./maps"
+			}
+		}
+	}
+}
 
 //パス情報をインクルード
 const path = require("./path.js");
@@ -22,13 +50,13 @@ const styleTask = () => {
 		}),
 		autoprefixer({})
 	];
-	return src(path.style.src)
+	return src(path.style.src , taskConfig.sourcemaps.flag)
 	.pipe($.sassGlob())
 	.pipe($.sass().on('error', $.sass.logError))
 	.pipe($.postcss(processors))
 	.pipe($.cleanCss())
 	.pipe($.rename({extname:".min.css"}))
-	.pipe(dest(path.dist.css));
+	.pipe(dest(path.dist.css, taskConfig.sourcemaps.path));
 }
 
 //JavaScript変換タスク
@@ -62,6 +90,7 @@ const ejsTask = () =>{
 	.pipe($.rename({extname:".html"}))
 	.pipe(dest(path.dist.root));
 }
+
 //ローカルサーバー起動
 const serverTask = (cb) => {
 	browserSync.init({
@@ -81,16 +110,22 @@ const bsReloadTask = (cb) => {
 	browserSync.reload();
 	cb();
 }
+
+//ファイル削除処理
+const cleanTask = () =>{
+	return del([...path.script.dist,...path.style.dist,path.html.dist,path.dist.js + "maps",path.dist.css + "maps"])
+}
+
 //ファイル監視タスク
 const fileWatchTask = () => {
 	watch(path.style.src, parallel(styleTask));
-	watch(path.script.src,parallel(scriptTask));
-	watch([path.ejs.file,path.ejs.module]).on("change",series(ejsTask,bsReloadTask));
+	watch(path.script.src, parallel(scriptTask));
+	watch([path.ejs.file, path.ejs.module]).on("change",series(ejsTask,bsReloadTask));
 	watch([...path.script.dist, ...path.style.dist]).on("change",series(bsReloadTask));
 	watch(path.image.dist).on("change",series(bsReloadTask));
 }
 
-
 //gulpタスク
 exports.default = series(parallel(ejsTask,styleTask,scriptBundleTask,scriptTask),serverTask,fileWatchTask);
-exports.styleTask = styleTask;
+exports.publish = series(cleanTask,ejsTask,styleTask,scriptBundleTask,scriptTask);
+

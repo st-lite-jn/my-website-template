@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "pub": "cross-env NODE_ENV=production gulp publish",
+    "dev": "gulp default"
   },
   "repository": {
     "type": "git",
@@ -23,11 +24,15 @@
     "autoprefixer": "^9.8.5",
     "babel-preset-env": "^1.7.0",
     "browser-sync": "^2.26.7",
+    "cross-env": "^7.0.2",
+    "del": "^5.1.0",
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
+    "gulp-changed": "^4.0.2",
     "gulp-clean-css": "^4.3.0",
     "gulp-concat": "^2.6.1",
     "gulp-ejs": "^5.1.0",
+    "gulp-if": "^3.0.0",
     "gulp-load-plugins": "^2.0.3",
     "gulp-postcss": "^8.0.0",
     "gulp-rename": "^2.0.0",
