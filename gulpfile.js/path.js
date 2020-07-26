@@ -19,8 +19,8 @@ module.exports = {
 		src : "./src/assets/scss/**/*.scss"
 	},
 	image:{
-		dist : "./dist/assets/img/**/*.[jpg||gif||png]",
-		src : "./src/assets/img/**/*.[jpg||gif||png]",
+		dist : "./dist/assets/img/**/*.[jpg||gif||png||svg]",
+		src : "./src/assets/img/**/*.[jpg||gif||png||svg]",
 	},
 	ejs :{
 		file:"./src/**/*.ejs",

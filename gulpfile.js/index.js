@@ -13,7 +13,9 @@ const autoprefixer = require('autoprefixer');
 //パス情報をインクルード
 const path = require("./path.js");
 
+//SASSをCSSに変換
 const styleTask = () => {
+	// gulp-post-cssの設定
 	const processors = [
 		cssImport({
 			path: [ 'node_modules' ]
@@ -28,32 +30,8 @@ const styleTask = () => {
 	.pipe($.rename({extname:".min.css"}))
 	.pipe(dest(path.dist.css));
 }
-const serverTask = (cb) => {
-	browserSync.init({
-		watch: true,
-		reloadOnRestart: true,
-		notify:true,
-		server:{
-			baseDir: "./dist/",
-			index: "index.html"
-		}
-	});
-	cb();
-}
-const fileWatchTask = () => {
-	watch(path.style.src, parallel(styleTask));
-	watch(path.script.src,parallel(scriptTask));
-	watch([path.ejs.file,path.ejs.module]).on("change",series(ejsTask,bsReloadTask));
-	watch([...path.script.dist, ...path.style.dist],series(bsReloadTask));
-}
 
-//ブラウザリロードタスク
-const bsReloadTask = (cb) => {
-	browserSync.reload();
-	cb();
-}
-
-//JavaScript
+//JavaScript変換タスク
 const scriptTask = () =>{
 	return src(path.script.src)
 	.pipe($.babel({
@@ -84,6 +62,35 @@ const ejsTask = () =>{
 	.pipe($.rename({extname:".html"}))
 	.pipe(dest(path.dist.root));
 }
+//ローカルサーバー起動
+const serverTask = (cb) => {
+	browserSync.init({
+		watch: true,
+		reloadOnRestart: true,
+		notify:true,
+		server:{
+			baseDir: "./dist/",
+			index: "index.html"
+		}
+	});
+	cb();
+}
 
+//ブラウザリロードタスク
+const bsReloadTask = (cb) => {
+	browserSync.reload();
+	cb();
+}
+//ファイル監視タスク
+const fileWatchTask = () => {
+	watch(path.style.src, parallel(styleTask));
+	watch(path.script.src,parallel(scriptTask));
+	watch([path.ejs.file,path.ejs.module]).on("change",series(ejsTask,bsReloadTask));
+	watch([...path.script.dist, ...path.style.dist]).on("change",series(bsReloadTask));
+	watch(path.image.dist).on("change",series(bsReloadTask));
+}
+
+
+//gulpタスク
 exports.default = series(parallel(ejsTask,styleTask,scriptBundleTask,scriptTask),serverTask,fileWatchTask);
 exports.styleTask = styleTask;
